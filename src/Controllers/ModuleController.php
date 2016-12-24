@@ -62,7 +62,7 @@ class ModuleController extends Controller
     {
         $module_id = Module::generateBase($request->name, $request->icon);
         
-        return redirect()->route(config('laraadmin.adminRoute') . 'modules.show', [$module_id]);
+        return redirect()->route('modules.show', [$module_id]);
     }
     
     /**
@@ -192,7 +192,7 @@ class ModuleController extends Controller
         $module->delete();
         
         $modules = Module::all();
-        return redirect()->route(config('laraadmin.adminRoute') . 'modules.index', ['modules' => $modules]);
+        return redirect()->route('modules.index', ['modules' => $modules]);
     }
     
     /**
@@ -329,7 +329,7 @@ class ModuleController extends Controller
         $module->view_col = $column_name;
         $module->save();
         
-        return redirect()->route(config('laraadmin.adminRoute') . 'modules.show', [$module_id]);
+        return redirect()->route('modules.show', [$module_id]);
     }
     
     /**
@@ -410,7 +410,7 @@ class ModuleController extends Controller
                 }
             }
         }
-        return redirect(config('laraadmin.adminRoute') . '/modules/' . $id . "#access");
+        return redirect('modules/' . $id . "#access");
     }
     
     /**
