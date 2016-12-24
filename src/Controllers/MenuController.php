@@ -91,7 +91,7 @@ class MenuController extends Controller
                 "status" => "success"
             ], 200);
         } else {
-            return redirect(config('laraadmin.adminRoute') . '/la_menus');
+            return redirect('la_menus');
         }
     }
     
@@ -115,7 +115,7 @@ class MenuController extends Controller
         $menu->icon = $icon;
         $menu->save();
         
-        return redirect(config('laraadmin.adminRoute') . '/la_menus');
+        return redirect('la_menus');
     }
     
     /**
@@ -129,7 +129,7 @@ class MenuController extends Controller
         Menu::find($id)->delete();
         
         // Redirecting to index() method for Listing
-        return redirect()->route(config('laraadmin.adminRoute') . '.la_menus.index');
+        return redirect()->route('la_menus.index');
     }
     
     /**
