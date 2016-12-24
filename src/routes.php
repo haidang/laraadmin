@@ -2,7 +2,7 @@
 
 $as = "";
 if(\Dwij\Laraadmin\Helpers\LAHelper::laravel_ver() == 5.3) {
-    $as = config('laraadmin.adminRoute') . '.';
+    //$as = config('laraadmin.adminRoute') . '.';
 }
 
 /**
