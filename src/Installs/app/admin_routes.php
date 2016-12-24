@@ -16,7 +16,7 @@ Route::get('files/{hash}/{name}', 'LA\UploadsController@get_file');
 
 $as = "";
 if(\Dwij\Laraadmin\Helpers\LAHelper::laravel_ver() == 5.3) {
-	$as = config('laraadmin.adminRoute').'.';
+	//$as = config('laraadmin.adminRoute').'.';
 	
 	// Routes for Laravel 5.3
 	Route::get('/logout', 'Auth\LoginController@logout');
