@@ -421,7 +421,7 @@ class LAHelper
             $active_str = 'class="active"';
         }
         
-        $str = '<li' . $treeview . ' ' . $active_str . '><a href="' . url(config("laraadmin.adminRoute") . '/' . $menu->url) . '"><i class="fa ' . $menu->icon . '"></i> <span>' . LAHelper::real_module_name($menu->name) . '</span> ' . $subviewSign . '</a>';
+        $str = '<li' . $treeview . ' ' . $active_str . '><a href="' . url($menu->url) . '"><i class="fa ' . $menu->icon . '"></i> <span>' . LAHelper::real_module_name($menu->name) . '</span> ' . $subviewSign . '</a>';
         
         if(count($childrens)) {
             $str .= '<ul class="treeview-menu">';
@@ -464,7 +464,7 @@ class LAHelper
             $active_str = 'class="active"';
         }
         
-        $str = '<li ' . $treeview . '' . $active_str . '><a ' . $treeview2 . ' href="' . url(config("laraadmin.adminRoute") . '/' . $menu->url) . '">' . LAHelper::real_module_name($menu->name) . $subviewSign . '</a>';
+        $str = '<li ' . $treeview . '' . $active_str . '><a ' . $treeview2 . ' href="' . url($menu->url) . '">' . LAHelper::real_module_name($menu->name) . $subviewSign . '</a>';
         
         if(count($childrens)) {
             $str .= '<ul class="dropdown-menu" role="menu">';
