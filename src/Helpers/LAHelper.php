@@ -367,7 +367,7 @@ class LAHelper
      */
     public static function print_menu_editor($menu)
     {
-        $editing = \Collective\Html\FormFacade::open(['route' => ['la_menus.destroy', $menu->id], 'method' => 'delete', 'style' => 'display:inline']);
+        $editing = \Collective\Html\FormFacade::open(['route' => [config('laraadmin.adminRoute') . '.la_menus.destroy', $menu->id], 'method' => 'delete', 'style' => 'display:inline']);
         $editing .= '<button class="btn btn-xs btn-danger pull-right"><i class="fa fa-times"></i></button>';
         $editing .= \Collective\Html\FormFacade::close();
         if($menu->type != "module") {
@@ -409,7 +409,7 @@ class LAHelper
     public static function print_menu($menu, $active = false)
     {
         $childrens = \Dwij\Laraadmin\Models\Menu::where("parent", $menu->id)->orderBy('hierarchy', 'asc')->get();
-
+        
         $treeview = "";
         $subviewSign = "";
         if(count($childrens)) {
@@ -421,15 +421,12 @@ class LAHelper
             $active_str = 'class="active"';
         }
         
-        $str = '<li' . $treeview . ' ' . $active_str . '><a href="' . url($menu->url) . '"><i class="fa ' . $menu->icon . '"></i> <span>' . LAHelper::real_module_name($menu->name) . '</span> ' . $subviewSign . '</a>';
+        $str = '<li' . $treeview . ' ' . $active_str . '><a href="' . url(config("laraadmin.adminRoute") . '/' . $menu->url) . '"><i class="fa ' . $menu->icon . '"></i> <span>' . LAHelper::real_module_name($menu->name) . '</span> ' . $subviewSign . '</a>';
         
         if(count($childrens)) {
             $str .= '<ul class="treeview-menu">';
             foreach($childrens as $children) {
-                $module = Module::get($children->url);
-                if(Module::hasAccess($module->id)) {
-                    $str .= LAHelper::print_menu($children);
-                }
+                $str .= LAHelper::print_menu($children);
             }
             $str .= '</ul>';
         }
@@ -464,7 +461,7 @@ class LAHelper
             $active_str = 'class="active"';
         }
         
-        $str = '<li ' . $treeview . '' . $active_str . '><a ' . $treeview2 . ' href="' . url($menu->url) . '">' . LAHelper::real_module_name($menu->name) . $subviewSign . '</a>';
+        $str = '<li ' . $treeview . '' . $active_str . '><a ' . $treeview2 . ' href="' . url(config("laraadmin.adminRoute") . '/' . $menu->url) . '">' . LAHelper::real_module_name($menu->name) . $subviewSign . '</a>';
         
         if(count($childrens)) {
             $str .= '<ul class="dropdown-menu" role="menu">';
